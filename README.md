@@ -1,5 +1,5 @@
 # webfontloader を使用した webfont の読み込みサンプル
-## 何がいいのか
+## 使用のメリット
 ### webfont 読み込みの問題点を解決できる
 webfontloader.js の読み込みで下記を解消できる
 
