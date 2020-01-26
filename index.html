@@ -4,40 +4,56 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&text=%23%24%25%26%22%27%21%3f_%2d%2e%5b%5d%28%29%3d" rel="stylesheet">-->
-    <!-- text=「サブセット化したい文字列をURLエンコードすることで記号などもサブセット化できる」-->
-    <title>test_webfont</title>
+    <!--
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&text=%23%24%25%26%22%27%21%3f_%2d%2e%5b%5d%28%29%3d" rel="stylesheet">
+        href のクエリに text パラメータを使用する事で、使用したい文字のみ指定できる：（例）text={subset strings}
+    -->
+    <title>test webfontloader</title>
     <style>
         .wf-active body {
-            font-family: 'Roboto Condensed', serif;
+            font-family: 'Roboto Condensed', 'Noto Sans JP', sans-serif;
         }
     </style>
 </head>
 <body>
-    <p>abcdfeg%?!<span>##</span><span>_</span><span>-</span>$"'</p>
+    <p>この文字の font-family は、日本語文字は Noto Sans JP 英文は Roboto Condensed です</p>
+    <!-- <script src="main.js"></script> -->
     <script>
         window.WebFontConfig = {
             google: {
-                families: [ 'Roboto Condensed' ],
-                text: `%#?!_-.abcd'"`
+                families: [ 'Noto Sans JP', 'Roboto Condensed' ],
+                // text: 'こNoです', subset texts
             },
-            loading: function() { console.log('ロードちゅう');},
-            active: function() { console.log('OK');},
-            inactive: function() { console.log('ダメ罰');},
-            fontloading: function(familyName, fvd) {},
-            fontactive: function(familyName, fvd) { console.log(`${familyName}`) },
-            fontinactive: function(familyName, fvd) {}
+            loading: function() {
+                console.log('loading');
+            },
+            active: function() {
+                console.log('active');
+            },
+            inactive: function() {
+                console.log('inactive');
+            },
+            fontloading: function(familyName, fvd) {
+                // loadding と異なる点は引数から値を取得できます
+                console.log('fontloading', familyName, fvd);
+            },
+            fontactive: function(familyName, fvd) {
+                // active と異なる点は引数から値を取得できます
+                console.log('fontactive', familyName, fvd);
+            },
+            fontinactive: function(familyName, fvd) {
+                // inactive と異なる点は引数から値を取得できます
+                console.log('fontinactive', familyName, fvd);
+            }
         };
-        setTimeout(function() {
-            (function() {
+        (function() {
             var wf = document.createElement('script');
             wf.src = './webfontloader.js';
             wf.type = 'text/javascript';
             wf.async = 'true';
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(wf, s);
-            })();
-        }, 0);
+        })();
     </script>
 </body>
 </html>

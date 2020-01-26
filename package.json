@@ -1,5 +1,11 @@
 {
-  "devDependencies": {
+  "name": "webfontloader-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/honjio/webfontloader-example.git",
+  "author": "fujino-yuki <xxx153yuu.story@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
     "webfontloader": "^1.6.28"
   }
 }

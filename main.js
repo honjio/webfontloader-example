@@ -1,3 +1,5 @@
+// Please use a bundle system such as webpack
+
 import WebFont from 'webfontloader';
 
 WebFont.load({

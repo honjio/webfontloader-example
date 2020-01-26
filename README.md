@@ -1,17 +1,11 @@
-# webfontloader を使用した webfont の読み込みサンプル
-## 使用のメリット
-### webfont 読み込みの問題点を解決できる
-webfontloader.js の読み込みで下記を解消できる
+# Web Font Loader を使用した Web Font の読み込みサンプル
 
-* link タグで webfont を読み込む場合、必然的に head タグ内で読み込むことになり、  
-サイト全体の読み込みに対して遅延が発生する。
-* webfont が全てローディングできていない状態で font を読み込もうとするので、  
-完全に読み込み終わるまでのちらつきが発生する
+> Web Font Loaderは、Google Fonts APIが提供するよりも、フォントの読み込みをより細かく制御できるJavaScriptライブラリです
 
-### 何故解消できるのか
-* js で webfont の読み込みを行うことができるので、  
-body の閉じタグ手前で読み込むことでhtmlのレンダリングを阻害しない
-* webfontloader.js 自体を非同期で読み込むことでページの読み込み完了の高速化
+[Google Fonts | Web Font Loader](https://developers.google.com/fonts/docs/webfont_loader) より引用（日本語訳）
 
-### そのほか
-* サブセット化対応
+## 静的な Link タグでの読み込みよりも優れる点
+
+* 動的に link タグを追加するので、一通りコンテンツのレンダリングが終了した後に webfont の読み込みを実施することができる
+* script による webfont の読み込み状況検知により、読み込みが完全に完了した後 webfont 指定のある font-family を有効化できる。その為、表示のちらつきを最小限に抑える事ができる  
+webfont を指定した font-family が静的に記述されている場合、読み込みが完全に完了していない状態でも webfont を表示しようとする為、表示のちらつきが発生してしまう
