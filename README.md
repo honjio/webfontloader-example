@@ -1,4 +1,4 @@
-# Web Font Loader を使用した Web Font の読み込みサンプル
+# Web Font Loader の使用例
 
 > Web Font Loaderは、Google Fonts APIが提供するよりも、フォントの読み込みをより細かく制御できるJavaScriptライブラリです
 
